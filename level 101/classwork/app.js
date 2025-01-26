@@ -1,0 +1,1 @@
+//ecma script aris ragac wesebi romelsac raime programirebis enas sheudzlia gayves

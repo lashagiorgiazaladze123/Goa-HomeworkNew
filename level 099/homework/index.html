@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holy Grail Layout - Level 5</title>
+  <style>
+    /* Reset margin and padding */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Layout container */
+    .container {
+      display: grid;
+      gap: 10px;
+      padding: 10px;
+    }
+
+    /* Desktop layout */
+    @media (min-width: 768px) {
+      .container {
+        grid-template-areas: 
+          "A A A A"
+          "B C C D"
+          "E E E E";
+        grid-template-columns: 1fr 2fr 1fr;
+      }
+    }
+
+    /* Mobile layout */
+    @media (max-width: 767px) {
+      .container {
+        grid-template-areas: 
+          "A"
+          "B"
+          "C"
+          "D"
+          "E";
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Individual blocks */
+    .item {
+      background-color: #f0f0f0;
+      border: 2px solid #00bcd4;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .A { grid-area: A; }
+    .B { grid-area: B; }
+    .C { grid-area: C; }
+    .D { grid-area: D; }
+    .E { grid-area: E; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Level-5: Holy Grail Layout</h1>
+  <div class="container">
+    <div class="item A">A</div>
+    <div class="item B">B</div>
+    <div class="item C">C</div>
+    <div class="item D">D</div>
+    <div class="item E">E</div>
+  </div>
+</body>
+</html>

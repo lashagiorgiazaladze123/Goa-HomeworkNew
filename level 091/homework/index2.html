@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Example 5</title>
+</head>
+<body>
+  <h1>პირველი და ბოლო ელემენტის გაცვლა</h1>
+  <label for="nValue">რიცხვების რაოდენობა N: </label>
+  <input type="number" id="nValue" />
+  <br><br>
+  <div id="inputFields"></div>
+  <button onclick="swapFirstAndLast()">გაგზავნა</button>
+  <h3>მოცემული მასივი შემდეგი იქნება:</h3>
+  <p id="output5"></p>
+
+  <script>
+    function swapFirstAndLast() {
+      let N = document.getElementById('nValue').value;
+      let arr = [];
+
+      // შევქმნათ N ცალ input field
+      let inputFields = document.getElementById('inputFields');
+      inputFields.innerHTML = '';  // გასუფთავება
+
+      for (let i = 0; i < N; i++) {
+        inputFields.innerHTML += `<label for="num${i}">რიცხვი ${i+1}: </label><input type="number" id="num${i}" /><br>`;
+      }
+
+      // დაემატოს ღილაკი
+      inputFields.innerHTML += '<br><button onclick="processSwap()">შეფასება</button>';
+    }
+
+    function processSwap() {
+      let N = document.getElementById('nValue').value;
+      let arr = [];
+
+      // შეგროვება ყველა შეყვანილი რიცხვისგან
+      for (let i = 0; i < N; i++) {
+        arr.push(parseInt(document.getElementById(`num${i}`).value));
+      }
+
+      // პირველი და ბოლო ელემენტის გაცვლა
+      let temp = arr[0];
+      arr[0] = arr[N-1];
+      arr[N-1] = temp;
+
+      // გამოტანა
+      document.getElementById('output5').innerHTML = arr.join(', ');
+    }
+  </script>
+</body>
+</html>

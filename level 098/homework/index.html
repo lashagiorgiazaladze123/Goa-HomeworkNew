@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ქუქი-კლიკერი</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .cookie {
+            width: 100px;
+            height: 100px;
+            background-image: url('cookie.png');
+            background-size: cover;
+            border-radius: 50%;
+            margin: 20px auto;
+            cursor: pointer;
+        }
+
+        .stats {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .gadgets button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .gadgets button:hover {
+            background-color: #0056b3;
+        }
+
+        .gadgets button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <h1>ქუქი-კლიკერი</h1>
+    <div class="cookie" id="cookie"></div>
+    <div class="stats">
+        <p>ქულები: <span id="score">0</span></p>
+        <p>ოქრო: <span id="gold">0</span></p>
+    </div>
+    
+    <div class="gadgets">
+        <button id="gadget1" disabled>გაჯეტი 1 - 10 ოქრო</button>
+        <button id="gadget2" disabled>გაჯეტი 2 - 50 ოქრო</button>
+        <button id="gadget3" disabled>გაჯეტი 3 - 100 ოქრო</button>
+    </div>
+</div>
+
+<script>
+    let score = 0;
+    let gold = 0;
+    let gadgets = { gadget1: false, gadget2: false, gadget3: false };
+
+    const scoreDisplay = document.getElementById('score');
+    const goldDisplay = document.getElementById('gold');
+    const cookie = document.getElementById('cookie');
+    const gadget1Button = document.getElementById('gadget1');
+    const gadget2Button = document.getElementById('gadget2');
+    const gadget3Button = document.getElementById('gadget3');
+
+    cookie.addEventListener('click', () => {
+        let points = 1;
+        let goldIncrease = 1;
+
+        if (gadgets.gadget1) points += 1; // Gadget 1 doubles the points
+        if (gadgets.gadget2) goldIncrease += 2; // Gadget 2 adds 2 extra gold per click
+        if (gadgets.gadget3) points += 3; // Gadget 3 gives additional 3 points per click
+
+        score += points;
+        gold += goldIncrease;
+
+        updateDisplay();
+    });
+
+    gadget1Button.addEventListener('click', () => purchaseGadget('gadget1', 10));
+    gadget2Button.addEventListener('click', () => purchaseGadget('gadget2', 50));
+    gadget3Button.addEventListener('click', () => purchaseGadget('gadget3', 100));
+
+    function purchaseGadget(gadget, cost) {
+        if (gold >= cost && !gadgets[gadget]) {
+            gold -= cost;
+            gadgets[gadget] = true;
+            document.getElementById(gadget).disabled = true;
+            updateDisplay();
+        }
+    }
+
+    function updateDisplay() {
+        scoreDisplay.textContent = score;
+        goldDisplay.textContent = gold;
+
+        gadget1Button.disabled = gold < 10 || gadgets.gadget1;
+        gadget2Button.disabled = gold < 50 || gadgets.gadget2;
+        gadget3Button.disabled = gold < 100 || gadgets.gadget3;
+    }
+</script>
+
+</body>
+</html>

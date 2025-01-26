@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>რეგისტრაცია</title>
+</head>
+<body>
+    <h2>რეგისტრაციის ფორმა</h2>
+    <form id="registrationForm">
+        <label for="name">სახელი:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">ემაილი:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="password">პაროლი:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label>სქესი:</label>
+        <input type="radio" id="male" name="gender" value="მამკაცი">
+        <label for="male">მამკაცი</label>
+        <input type="radio" id="female" name="gender" value="ქალი">
+        <label for="female">ქალი</label><br><br>
+
+        <button type="button" onclick="processForm()">გაგზავნა</button>
+    </form>
+
+    <script>
+        var dateBase = [];  // ბაზა, სადაც მონაცემები შეინახება
+
+        function processForm() {
+            // ფორმის მონაცემების მიღება
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            
+            if (!name || !email || !password || !gender) {
+                alert("ყველა ველი უნდა იყოს შევსებული.");
+                return;
+            }
+
+            if (password.length < 8) {
+                alert("Password is too short");
+                return;
+            }
+
+            // ობიექტის შექმნა და ბაზაში დამატება
+            var user = {
+                name: name,
+                email: email,
+                password: password,
+                gender: gender.value
+            };
+
+            dateBase.push(user);
+            console.log(dateBase);  // ბაზის გამოყვანა კონსოლში
+        }
+    </script>
+</body>
+</html>

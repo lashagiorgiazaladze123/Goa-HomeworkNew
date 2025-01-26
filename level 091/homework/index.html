@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Example 3</title>
+</head>
+<body>
+  <h1>10 ელემენტიანი მასივი - რიცხვების გადათვლა</h1>
+  <p id="output3"></p>
+
+  <script>
+    // 1. შექმენით 10 ელემენტიანი მასივი
+    let arr = [];
+
+    // 2. შეიყვანეთ 10 რიცხვი კონსოლიდან
+    for (let i = 0; i < 10; i++) {
+      arr[i] = parseInt(prompt(`შეიყვანეთ რიცხვი ${i+1}:`));
+    }
+
+    // 3. გააორმაგეთ რიცხვები
+    for (let i = 0; i < 10; i++) {
+      arr[i] = arr[i] * 2;
+    }
+
+    // 4. გამობეჭდეთ ახალი მასივი
+    document.getElementById('output3').innerHTML = `გადაერქვა მასივი: ${arr.join(', ')}`;
+  </script>
+</body>
+</html>

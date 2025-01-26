@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #3498db;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .user-list {
+            margin-top: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .user-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .user-card p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add User Data</h1>
+    <form id="userForm">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" required>
+
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" required>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" required>
+
+        <label for="id">ID</label>
+        <input type="text" id="id" required>
+
+        <label for="height">Height (cm)</label>
+        <input type="number" id="height" required>
+
+        <label for="description">Description</label>
+        <textarea id="description" rows="4"></textarea>
+
+        <button type="submit">Add User</button>
+    </form>
+
+    <div class="user-list" id="userList">
+        <h2>Saved Users</h2>
+    </div>
+
+    <script>
+        const userForm = document.getElementById('userForm');
+        const userList = document.getElementById('userList');
+
+        function generateEmail(firstName, lastName, age) {
+            const randomSuffix = Math.floor(Math.random() * 1000);
+            return `${firstName.toLowerCase()}.${lastName.toLowerCase()}${age}@example.com`;
+        }
+
+        function saveUser(user) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        function displayUsers() {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            userList.innerHTML = '<h2>Saved Users</h2>';
+
+            users.forEach((user, index) => {
+                const userCard = document.createElement('div');
+                userCard.className = 'user-card';
+                userCard.innerHTML = `
+                    <p><strong>Name:</strong> ${user.firstName} ${user.lastName}</p>
+                    <p><strong>Age:</strong> ${user.age}</p>
+                    <p><strong>ID:</strong> ${user.id}</p>
+                    <p><strong>Height:</strong> ${user.height} cm</p>
+                    <p><strong>Description:</strong> ${user.description}</p>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                `;
+                userList.appendChild(userCard);
+            });
+        }
+
+        userForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const age = document.getElementById('age').value;
+            const id = document.getElementById('id').value;
+            const height = document.getElementById('height').value;
+            const description = document.getElementById('description').value;
+            const email = generateEmail(firstName, lastName, age);
+
+            const user = { firstName, lastName, age, id, height, description, email };
+
+            saveUser(user);
+            displayUsers();
+
+            userForm.reset();
+        });
+
+        displayUsers();
+    </script>
+</body>
+</html>

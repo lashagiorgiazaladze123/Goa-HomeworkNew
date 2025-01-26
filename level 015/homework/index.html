@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Number</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #game-section {
+      display: none;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="name-section">
+    <h1>Welcome!</h1>
+    <label for="username">Enter your name:</label>
+    <input type="text" id="username" required>
+    <button onclick="saveName()">Start</button>
+  </div>
+
+  <div id="game-section">
+    <h2>Welcome, <span id="display-name"></span>!</h2>
+    <label for="color-picker">Pick a background color:</label>
+    <input type="color" id="color-picker" onchange="changeBackgroundColor()">
+
+    <h3>Your Score: <span id="score">0</span></h3>
+    <label for="guess">Enter your guess:</label>
+    <input type="number" id="guess">
+    <button onclick="checkGuess()">Submit</button>
+
+    <p>Random number range: <span id="range">1 - 2</span></p>
+  </div>
+
+ 
+  <script src="script.js"></script>
+</body>
+</html>

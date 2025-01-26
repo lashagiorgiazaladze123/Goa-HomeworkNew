@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Example 2</title>
+</head>
+<body>
+  <h1>შეიყვანეთ რიცხვები</h1>
+  <label for="nValue">რიცხვების რაოდენობა N: </label>
+  <input type="number" id="nValue" />
+  <br><br>
+  
+  <div id="inputFields"></div>
+  <button onclick="generateArray()">შეიყვანეთ რიცხვები</button>
+  <h3>კენტ ინდექსებზე მყოფი ელემენტები:</h3>
+  <p id="output2"></p>
+
+  <script>
+    function generateArray() {
+      let N = document.getElementById('nValue').value;
+      let inputFields = document.getElementById('inputFields');
+      inputFields.innerHTML = '';  // გასუფთავება შევსებული ველებისგან
+
+      // შევქმნათ N ცალ input field
+      for (let i = 0; i < N; i++) {
+        inputFields.innerHTML += `<label for="num${i}">რიცხვი ${i+1}: </label><input type="number" id="num${i}" /><br>`;
+      }
+
+      // დაემატოს ღილაკი
+      inputFields.innerHTML += '<br><button onclick="processArray()">გაგზავნა</button>';
+    }
+
+    function processArray() {
+      let N = document.getElementById('nValue').value;
+      let arr = [];
+
+      // შეგროვება ყველა შეყვანილი რიცხვისგან
+      for (let i = 0; i < N; i++) {
+        arr.push(parseInt(document.getElementById(`num${i}`).value));
+      }
+
+      // კენტ ინდექსებზე ელემენტების გამოსაყენებლად
+      let output = '';
+      for (let i = 1; i < N; i += 2) {
+        output += `a[${i}] = ${arr[i]}<br>`;
+      }
+
+      document.getElementById('output2').innerHTML = output;
+    }
+  </script>
+</body>
+</html>

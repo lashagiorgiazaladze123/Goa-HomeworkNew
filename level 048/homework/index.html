@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ლამაზი სიის დიზაინი</title>
+    <style>
+        /* ძირითადი სტილი */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.8;
+            margin: 40px;
+        }
+
+        h2 {
+            color: #555;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* დაუწერელი სიის სტილი */
+        ul.custom-ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.custom-ul li {
+            background: #e0f7fa;
+            color: #00796b;
+            margin: 10px 0;
+            padding: 12px 20px;
+            border-radius: 25px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        ul.custom-ul li::before {
+            content: "•";
+            font-size: 24px;
+            color: #004d40;
+            margin-right: 15px;
+        }
+
+        /* დალაგებული სიის სტილი */
+        ol.custom-ol {
+            counter-reset: custom-counter;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        ol.custom-ol li {
+            counter-increment: custom-counter;
+            background: #ffe0b2;
+            color: #e65100;
+            margin: 10px 0;
+            padding: 12px 20px;
+            border-radius: 25px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        ol.custom-ol li::before {
+            content: counter(custom-counter) ".";
+            font-size: 20px;
+            font-weight: bold;
+            color: #bf360c;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>დაულაგებული სია:</h2>
+    <ul class="custom-ul">
+        <li>ელემენტი 1</li>
+        <li>ელემენტი 2</li>
+        <li>ელემენტი 3</li>
+    </ul>
+
+    <h2>დალაგებული სია:</h2>
+    <ol class="custom-ol">
+        <li>ნაწილი პირველი</li>
+        <li>ნაწილი მეორე</li>
+        <li>ნაწილი მესამე</li>
+    </ol>
+
+</body>
+</html>
+

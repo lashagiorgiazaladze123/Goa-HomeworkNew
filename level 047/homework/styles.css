@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center; /* Center align the header text */
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    border: 10px solid purple; /* Purple border around the entire main container */
+    background-color: purple;
+    margin: 20px; /* Adds space around the main container */
+    box-sizing: border-box;
+}
+
+#myDiv, #MyDiv, #idDiv, #iDdiv {
+    width: 250px;
+    height: 450px;
+    border: 5px solid blue; /* Blue border around each div */
+    background-color: rgb(106, 171, 255);
+    transition: background-color 0.25s, transform 0.25s;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#myDiv:hover, #MyDiv:hover, #idDiv:hover, #iDdiv:hover {
+    background-color: rgb(106, 109, 255); /* Darker color on hover */
+    transform: scale(1.1); /* Increase size by 10% */
+}
+
+#myGoa {
+    color: green;
+}
+
+#myLi {
+    color: red;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 50px; /* Adjust as needed */
+    width: 100%;
+}
+
+#myBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#pp{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+

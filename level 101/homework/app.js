@@ -1,0 +1,1 @@
+//ecma script aris wesebi romelsac ragac konkretuli programirebis enebi miyveba romlis magaliticaa javascript scvadasxva enebi ecma scriptis sxvadasxva versias miyveba (JavaScript miyveba ecmascript6)

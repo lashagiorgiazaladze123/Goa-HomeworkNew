@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Example 4</title>
+</head>
+<body>
+  <h1>რიცხვების შებრუნება</h1>
+  <label for="nValue">რიცხვების რაოდენობა N: </label>
+  <input type="number" id="nValue" />
+  <br><br>
+  <div id="inputFields"></div>
+  <button onclick="reverseArray()">გაგზავნა</button>
+  <h3>შებრუნებული რიცხვები:</h3>
+  <p id="output4"></p>
+
+  <script>
+    function reverseArray() {
+      let N = document.getElementById('nValue').value;
+      let arr = [];
+
+      // შევქმნათ N ცალ input field
+      let inputFields = document.getElementById('inputFields');
+      inputFields.innerHTML = '';  // გასუფთავება
+
+      for (let i = 0; i < N; i++) {
+        inputFields.innerHTML += `<label for="num${i}">რიცხვი ${i+1}: </label><input type="number" id="num${i}" /><br>`;
+      }
+
+      // დაემატოს ღილაკი
+      inputFields.innerHTML += '<br><button onclick="processReverseArray()">შეფასება</button>';
+    }
+
+    function processReverseArray() {
+      let N = document.getElementById('nValue').value;
+      let arr = [];
+
+      // შეგროვება ყველა შეყვანილი რიცხვისგან
+      for (let i = 0; i < N; i++) {
+        arr.push(parseInt(document.getElementById(`num${i}`).value));
+      }
+
+      // შებრუნება და გამოტანა
+      arr.reverse();  // შებრუნების მეთოდი
+      document.getElementById('output4').innerHTML = arr.join(', ');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+/* ელემენტს X ღერძზე 50 პიქსელით გადავიყვანთ */
+.element {
+    transform: translateX(50px);
+}
+
+/* ელემენტს 45 გრადუსით დავატრიალებთ */
+.element {
+    transform: rotate(45deg);
+}
+
+/* ელემენტს 1.5-ჯერ გავზრდით */
+.element {
+    transform: scale(1.5);
+}
+
+/* ელემენტს X და Y ღერძებზე ერთდროულად გადავიყვანთ */
+.element {
+    transform: translate(20px, 30px);
+}

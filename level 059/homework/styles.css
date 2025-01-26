@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0; /* საწყისი კუთხეები მკვეთრი */
+    transition: transform 0.5s, border-radius 0.5s; /* ანიმაციის დრო */
+}
+
+.box:hover {
+    transform: rotate(90deg); /* 90 გრადუსით ამოტრიალება */
+    border-radius: 75px; /* სრულად მომრგვალება */
+}

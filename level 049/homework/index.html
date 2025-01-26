@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        thead {
+            background-color: #EF5350;
+            color: white;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Occupation</th>
+            <th>Location</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Luke Peters</td>
+            <td>25</td>
+            <td>Freelance Web Developer</td>
+            <td>Brookline, MA</td>
+        </tr>
+        <tr>
+            <td>Joseph Smith</td>
+            <td>27</td>
+            <td>Project Manager</td>
+            <td>Somerville, MA</td>
+        </tr>
+        <tr>
+            <td>Maxwell Johnson</td>
+            <td>26</td>
+            <td>UX Architect & Designer</td>
+            <td>Arlington, MA</td>
+        </tr>
+        <tr>
+            <td>Harry Harrison</td>
+            <td>25</td>
+            <td>Front-End Developer</td>
+            <td>Boston, MA</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

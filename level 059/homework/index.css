@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.animated-box {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: transform 0.5s, background-color 0.5s, width 0.5s, height 0.5s;
+}
+
+.animated-box:hover {
+    transform: translateY(-20px) rotate(15deg); /* მოძრაობა და ბრუნვა */
+    width: 150px; /* ზომის ცვლილება */
+    height: 150px; /* ზომის ცვლილება */
+    background-color: #e74c3c; /* ფერის ცვლილება */
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        thead {
+            background-color: #2196F3;
+            color: white;
+        }
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ninjaguy</td>
+            <td>misterninja@hotmail.com</td>
+            <td>************</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>jsmith41</td>
+            <td>joseph.smith@gmail.com</td>
+            <td>************</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>1337hax0r15</td>
+            <td>hackerdude1000@aol.com</td>
+            <td>************</td>
+            <td>Yes</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

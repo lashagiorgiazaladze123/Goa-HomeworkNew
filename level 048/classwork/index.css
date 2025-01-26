@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+    border-collapse: separate; /* Change from collapse to separate */
+    border-spacing: 0; /* Remove spacing between cells */
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    border-radius: 8px; /* Adjust the radius as needed */
+    overflow: hidden; /* Ensures the border radius affects the corners */
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #dddddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}

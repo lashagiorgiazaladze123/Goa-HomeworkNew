@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1 align="center">About Me</h1>
+        <p><strong><i><u>About Me</u></i></strong></p>
+        <h2>Name: Lasha Giorgi</h2>
+        <h2>Surname: Azaladze</h2>
+        <h2>Age: 13</h2>
+        <h2>Height: 163</h2>
+        <h2>Hobbies: Playing guitar, football, programming, making sites</h2>
+        <h2 align="center">How about you?</h2>
+        <input id="nameInput" type="text" placeholder="Enter your name" required>
+        <input id="surnameInput" type="text" placeholder="Enter your surname" required>
+        <input id="ageInput" type="number" placeholder="Enter your age" required>
+        <input id="heightInput" type="text" placeholder="Enter your height" required>
+        <input id="hobbiesInput" type="text" placeholder="Enter your hobbies" required>
+        <button id="registerButton">Register</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        // Wait for the document to be fully loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get references to elements
+            var registerButton = document.getElementById("registerButton");
+            var messageDiv = document.getElementById("message");
+
+            // Attach click event handler to the button
+            registerButton.addEventListener("click", function() {
+                
+                // Retrieve input values
+                var name = document.getElementById("nameInput").value.trim();
+                var surname = document.getElementById("surnameInput").value.trim();
+                var age = document.getElementById("ageInput").value.trim();
+                var height = document.getElementById("heightInput").value.trim();
+                var hobbies = document.getElementById("hobbiesInput").value.trim();
+
+                // Check if any input field is empty
+                if (name === "" || surname === "" || age === "" || height === "" || hobbies === "") {
+                    messageDiv.innerHTML = '<p class="error-message">Please fill out all fields.</p>';
+                } else {
+                    // Display the thank you message
+                    messageDiv.innerHTML = "Thank you, " + name + " " + surname + "! Your registration details have been received.";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

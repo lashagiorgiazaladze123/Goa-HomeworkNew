@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>პაროლის სიძლიერის შეფასება</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .strength {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .weak {
+            background-color: #f8d7da;
+        }
+
+        .medium {
+            background-color: #fff3cd;
+        }
+
+        .strong {
+            background-color: #d4edda;
+        }
+
+    </style>
+</head>
+<body>
+
+<form id="passwordForm">
+    <div class="form-group">
+        <label for="password">პაროლი</label>
+        <input type="password" id="password" required>
+        <div class="strength" id="passwordStrength"></div>
+    </div>
+</form>
+
+<script>
+    const passwordInput = document.getElementById('password');
+    const passwordStrength = document.getElementById('passwordStrength');
+
+    passwordInput.addEventListener('input', () => {
+        const password = passwordInput.value;
+        const strength = getPasswordStrength(password);
+        
+        passwordStrength.textContent = `პაროლის სიძლიერე: ${strength.label}`;
+        passwordInput.className = '';
+        passwordInput.classList.add(strength.class);
+    });
+
+    function getPasswordStrength(password) {
+        let strength = { label: 'მდაბალი', class: 'weak' };
+
+        if (password.length >= 10 && /[A-Z]/.test(password) && /\d/.test(password) && /[!@#$%^&*]/.test(password)) {
+            strength = { label: 'ძლიერი', class: 'strong' };
+        } else if (password.length >= 8 && (/[A-Z]/.test(password) || /\d/.test(password))) {
+            strength = { label: 'საშუალო', class: 'medium' };
+        } else if (password.length >= 6) {
+            strength = { label: 'მდაბალი', class: 'weak' };
+        }
+
+        return strength;
+    }
+</script>
+
+</body>
+</html>

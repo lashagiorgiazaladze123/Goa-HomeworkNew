@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ფორმა ვალიდაციით</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<form id="registrationForm">
+    <div class="form-group">
+        <label for="fullName">სრული სახელი</label>
+        <input type="text" id="fullName" required>
+        <div class="error-message" id="fullNameError"></div>
+    </div>
+    <div class="form-group">
+        <label for="email">ელ. ფოსტა</label>
+        <input type="email" id="email" required>
+        <div class="error-message" id="emailError"></div>
+    </div>
+    <div class="form-group">
+        <label for="password">პაროლი</label>
+        <input type="password" id="password" required>
+        <div class="error-message" id="passwordError"></div>
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword">პაროლის დადასტურება</label>
+        <input type="password" id="confirmPassword" required>
+        <div class="error-message" id="confirmPasswordError"></div>
+    </div>
+    <div class="form-group">
+        <label for="age">ასაკი</label>
+        <input type="number" id="age" required>
+        <div class="error-message" id="ageError"></div>
+    </div>
+    <button type="submit">დარეგისტრირება</button>
+</form>
+
+<script>
+    const form = document.getElementById('registrationForm');
+
+    const validateFullName = () => {
+        const fullName = document.getElementById('fullName');
+        const error = document.getElementById('fullNameError');
+        const regex = /^[\u10D0-\u10FFa-zA-Z ]{3,}$/;
+        if (!regex.test(fullName.value)) {
+            error.textContent = 'სრული სახელი უნდა შეიცავდეს მინიმუმ 3 ასოს.';
+            fullName.classList.add('error');
+            fullName.classList.remove('success');
+        } else {
+            error.textContent = '';
+            fullName.classList.add('success');
+            fullName.classList.remove('error');
+        }
+    };
+
+    const validateEmail = () => {
+        const email = document.getElementById('email');
+        const error = document.getElementById('emailError');
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!regex.test(email.value)) {
+            error.textContent = 'მიუთითეთ სწორი ელ. ფოსტის ფორმატი.';
+            email.classList.add('error');
+            email.classList.remove('success');
+        } else {
+            error.textContent = '';
+            email.classList.add('success');
+            email.classList.remove('error');
+        }
+    };
+
+    const validatePassword = () => {
+        const password = document.getElementById('password');
+        const error = document.getElementById('passwordError');
+        const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (!regex.test(password.value)) {
+            error.textContent = 'პაროლი უნდა შეიცავდეს 8 სიმბოლოს, 1 დიდ ასოს, 1 რიცხვს და 1 სპეციალურ სიმბოლოს.';
+            password.classList.add('error');
+            password.classList.remove('success');
+        } else {
+            error.textContent = '';
+            password.classList.add('success');
+            password.classList.remove('error');
+        }
+    };
+
+    const validateConfirmPassword = () => {
+        const confirmPassword = document.getElementById('confirmPassword');
+        const password = document.getElementById('password');
+        const error = document.getElementById('confirmPasswordError');
+        if (confirmPassword.value !== password.value) {
+            error.textContent = 'პაროლები უნდა ემთხვეოდეს.';
+            confirmPassword.classList.add('error');
+            confirmPassword.classList.remove('success');
+        } else {
+            error.textContent = '';
+            confirmPassword.classList.add('success');
+            confirmPassword.classList.remove('error');
+        }
+    };
+
+    const validateAge = () => {
+        const age = document.getElementById('age');
+        const error = document.getElementById('ageError');
+        if (age.value < 18) {
+            error.textContent = 'ასაკი უნდა იყოს 18 ან მეტი.';
+            age.classList.add('error');
+            age.classList.remove('success');
+        } else {
+            error.textContent = '';
+            age.classList.add('success');
+            age.classList.remove('error');
+        }
+    };
+</script>
+
+</body>
+</html>

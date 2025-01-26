@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ზოოპარკი</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #ffffff 3px solid;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #333;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        .animal-image {
+            width: 100px;
+            height: auto;
+        }
+        .animal-info {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ზოოპარკი</h1>
+    </header>
+    <div class="container">
+        <section class="animal-info">
+            <h2>მატჩების სია</h2>
+            <table>
+                <tr>
+                    <th>სახელი</th>
+                    <th>ტიპი</th>
+                    <th>ფოტო</th>
+                </tr>
+                <tr>
+                    <td>ლომი</td>
+                    <td>დარჩენილი</td>
+                    <td><img src="lion.jpg" alt="ლომი" class="animal-image" /></td>
+                </tr>
+                <tr>
+                    <td>ჟირაფი</td>
+                    <td>დარჩენილი</td>
+                    <td><img src="giraffe.jpg" alt="ჟირაფი" class="animal-image" /></td>
+                </tr>
+                <tr>
+                    <td>კურდღელი</td>
+                    <td>დარჩენილი</td>
+                    <td><img src="rabbit.jpg" alt="კურდღელი" class="animal-image" /></td>
+                </tr>
+            </table>
+        </section>
+    </div>
+</body>
+</html>

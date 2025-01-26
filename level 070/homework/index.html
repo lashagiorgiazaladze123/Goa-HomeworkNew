@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>რეგისტრაცია</title>
+</head>
+<body>
+    <h2>რეგისტრაციის ფორმა</h2>
+    <form id="registrationForm">
+        <label for="name">სახელი:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="email">ემაილი:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="password">პაროლი:</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="terms">გამოყენების პირობები:</label>
+        <input type="checkbox" id="terms" name="terms"><br><br>
+
+        <button type="button" onclick="validateForm()">გაგზავნა</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            // ჩეკბოქსის და ინფორმაციის ველების შემოწმება
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var terms = document.getElementById('terms').checked;
+
+            if (!name || !email || !password) {
+                alert("ყველა ველი უნდა იყოს შევსებული.");
+                return;
+            }
+
+            if (!terms) {
+                alert("გთხოვთ, მონიშნოთ გამოყენების პირობები.");
+                return;
+            }
+
+            // მონაცემების გამოტანა კონსოლში
+            console.log("სახელი:", name);
+            console.log("ემაილი:", email);
+            console.log("პაროლი:", password);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animation Examples</title>
+  <style>
+    /* Fade In/Out */
+    .fadeElement {
+      opacity: 0;
+      transition: opacity 2s;
+    }
+
+    .show {
+      opacity: 1;
+    }
+
+    /* Slide In */
+    .slideElement {
+      transform: translateX(-100%);
+      transition: transform 2s;
+    }
+
+    .slideIn {
+      transform: translateX(0);
+    }
+
+    /* Move Ball */
+    .ball {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      transition: transform 2s;
+    }
+
+    .move {
+      transform: translateX(300px);
+    }
+
+    /* Resize Text */
+    #textElement {
+      font-size: 16px;
+      transition: font-size 2s;
+    }
+
+    .enlarge {
+      font-size: 40px;
+    }
+
+    /* Rotate */
+    .rotateElement {
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      text-align: center;
+      line-height: 100px;
+      transition: transform 2s;
+    }
+
+    .rotate {
+      transform: rotate(360deg);
+    }
+  </style>
+</head>
+<body>
+  <div style="margin: 20px;">
+    <button id="fadeBtn">Fade In/Out</button>
+    <div id="fadeElement" class="fadeElement">This is a fade element.</div>
+  </div>
+
+  <div style="margin: 20px;">
+    <button id="slideBtn">Slide In</button>
+    <div id="slideElement" class="slideElement">This is a slide-in element.</div>
+  </div>
+
+  <div style="margin: 20px;">
+    <button id="moveBtn">Move Ball</button>
+    <div id="ball" class="ball"></div>
+  </div>
+
+  <div style="margin: 20px;">
+    <button id="resizeBtn">Resize Text</button>
+    <p id="textElement">This text will resize!</p>
+  </div>
+
+  <div style="margin: 20px;">
+    <button id="rotateBtn">Rotate Element</button>
+    <div id="rotateElement" class="rotateElement">Rotating Element</div>
+  </div>
+
+  <script>
+    // Fade In/Out
+    document.getElementById('fadeBtn').addEventListener('click', function() {
+      const element = document.getElementById('fadeElement');
+      element.classList.toggle('show');
+    });
+
+    // Slide In
+    document.getElementById('slideBtn').addEventListener('click', function() {
+      const element = document.getElementById('slideElement');
+      element.classList.toggle('slideIn');
+    });
+
+    // Move Ball
+    document.getElementById('moveBtn').addEventListener('click', function() {
+      const ball = document.getElementById('ball');
+      ball.classList.toggle('move');
+      setTimeout(function() {
+        ball.classList.toggle('move');
+      }, 2000); // Ball will return after 2 seconds
+    });
+
+    // Resize Text
+    document.getElementById('resizeBtn').addEventListener('click', function() {
+      const textElement = document.getElementById('textElement');
+      textElement.classList.toggle('enlarge');
+      setTimeout(function() {
+        textElement.classList.toggle('enlarge');
+      }, 2000); // Text will return to original size after 2 seconds
+    });
+
+    // Rotate Element
+    document.getElementById('rotateBtn').addEventListener('click', function() {
+      const rotateElement = document.getElementById('rotateElement');
+      rotateElement.classList.toggle('rotate');
+    });
+  </script>
+</body>
+</html>

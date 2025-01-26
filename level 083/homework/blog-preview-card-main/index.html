@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Blog preview card</title>
+
+  <style>
+    /* Basic styling */
+    body {
+      background-color: yellow;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Container for the card */
+    #l {
+      height: auto;
+      width: 300px;
+      background-color: white;
+      border-radius: 20px;
+      margin: 70px auto;
+      padding: 20px;
+      box-sizing: border-box;
+      border: 1px solid black;
+      text-align: center;
+    }
+
+    /* Styling for the image */
+    #l img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+    }
+
+    /* Styling for the text content */
+    #l h1, #l p {
+      margin: 10px 0;
+    }
+
+    /* Attribution link styling */
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div id="l">
+    <!-- Image above text -->
+    <img src="data:image/png;base64,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">
+
+    <h1>Online Experiences</h1>
+    <p>Join unique interactive activities led by one-of-a-kind hosts—all without leaving home.</p>
+    <p><b>See Our Experiences</b></p>
+  </div>
+
+</body>
+</html>
