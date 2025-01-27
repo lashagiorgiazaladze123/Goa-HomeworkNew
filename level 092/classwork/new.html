@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate Alphabet Input</title>
+    <style>
+        #error {
+            color: red;
+            font-size: 16px;
+            display: none; /* Hidden by default */
+        }
+    </style>
+</head>
+<body>
+
+    <label for="alphaInput">Enter only letters:</label>
+    <input type="text" id="alphaInput" oninput="validateInput()">
+    <div id="error">Error: Please enter letters only!</div>
+
+    <script>
+        function validateInput() {
+            const inputField = document.getElementById("alphaInput");
+            const errorElement = document.getElementById("error");
+            const inputValue = inputField.value;
+
+            // Regular expression to check if the input contains only letters
+            const regex = /^[A-Za-z]+$/;
+
+            if (!regex.test(inputValue)) {
+                errorElement.style.display = "block"; // Show error message
+            } else {
+                errorElement.style.display = "none"; // Hide error message
+            }
+        }
+    </script>
+
+</body>
+</html>

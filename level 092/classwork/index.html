@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Count in Real-Time</title>
+    <style>
+        #count {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="inputField">Type something:</label>
+    <input type="text" id="inputField" oninput="updateCount()">
+    <div id="count">Character count: 0</div>
+
+    <script>
+        function updateCount() {
+            const inputField = document.getElementById("inputField");
+            const countElement = document.getElementById("count");
+            const charCount = inputField.value.length;
+            countElement.textContent = "Character count: " + charCount;
+        }
+    </script>
+
+</body>
+</html>

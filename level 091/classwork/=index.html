@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        #error {
+            color: red;
+            font-size: 16px;
+            display: none; /* Hidden by default */
+        }
+        .input-field {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px;
+        }
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+<form id="registrationForm" onsubmit="return validateForm()">
+    <input type="text" id="name" class="input-field" placeholder="Name" required><br>
+    <input type="email" id="email" class="input-field" placeholder="Email" required><br>
+    <input type="password" id="password" class="input-field" placeholder="Password" required><br>
+    <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm Password" required><br>
+    <input type="number" id="age" class="input-field" placeholder="Age" required><br>
+    <input type="submit" value="Submit" class="submit-btn">
+</form>
+
+<div id="error"></div>
+
+<script>
+    // Predefined username and password pair
+    const validUsers = {
+        "admin": "password123", // Replace with your valid username and password
+        "user1": "mypassword"
+    };
+
+    function validateForm() {
+        // Clear previous error messages
+        document.getElementById("error").style.display = "none";
+        
+        // Collect form inputs
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        const age = document.getElementById("age").value;
+
+        // Check if email is valid
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|net)$/;
+        if (!emailRegex.test(email)) {
+            displayError("Invalid email format!");
+            return false;
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            displayError("Passwords do not match!");
+            return false;
+        }
+
+        // Check if the user is older than 18
+        if (age < 18) {
+            displayError("You must be at least 18 years old.");
+            return false;
+        }
+
+        // Check if the username and password match the predefined pairs
+        if (!validUsers[name] || validUsers[name] !== password) {
+            displayError("Invalid username or password!");
+            return false;
+        }
+
+        // If all checks pass, return true
+        alert("Form submitted successfully!");
+        return true;
+    }
+
+    // Function to display error message
+    function displayError(message) {
+        const errorDiv = document.getElementById("error");
+        errorDiv.textContent = message;
+        errorDiv.style.display = "block";
+    }
+</script>
+
+</body>
+</html>

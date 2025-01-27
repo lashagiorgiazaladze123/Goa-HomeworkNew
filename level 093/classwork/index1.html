@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Counter</title>
+    <style>
+        #counter {
+            font-size: 30px;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+            margin: 10px;
+        }
+
+        #addBtn {
+            background-color: green;
+            color: white;
+        }
+
+        #subtractBtn {
+            background-color: red;
+            color: white;
+        }
+
+        #resetBtn {
+            background-color: blue;
+            color: white;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="counter" class="green">0</div>
+    <input type="number" id="inputValue" placeholder="Enter value">
+    <button id="addBtn">Add</button>
+    <button id="subtractBtn">Subtract</button>
+    <button id="resetBtn">Reset</button>
+
+    <script>
+        let counter = 0;
+        let resetCount = 0;
+
+        const counterElement = document.getElementById("counter");
+        const inputValue = document.getElementById("inputValue");
+        const addButton = document.getElementById("addBtn");
+        const subtractButton = document.getElementById("subtractBtn");
+        const resetButton = document.getElementById("resetBtn");
+
+        addButton.onclick = function() {
+            let value = parseInt(inputValue.value);
+            if (value > 100) {
+                alert("Cannot add more than 100");
+                return;
+            }
+            counter += value;
+            updateCounter();
+        };
+
+        subtractButton.onclick = function() {
+            let value = parseInt(inputValue.value);
+            if (value > 100) {
+                alert("Cannot subtract more than 100");
+                return;
+            }
+            counter -= value;
+            updateCounter();
+        };
+
+        resetButton.onclick = function() {
+            if (counter === 0 && resetCount > 0) {
+                alert("Cannot reset more than once when counter is at 0");
+                return;
+            }
+            counter = 0;
+            resetCount++;
+           
+            if (counter === 0) {
+                counterElement.classList.remove('green');
+                counterElement.classList.add('red');
+            } else if (counter > 0) {
+                counterElement.classList.remove('red');
+                counterElement.classList.add('green');
+            }
+        }
+    </script>
+
+</body>
+</html>

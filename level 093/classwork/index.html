@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        #counter {
+            font-size: 30px;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            color: white;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #addBtn {
+            background-color: green;
+            color: white;
+        }
+
+        #subtractBtn {
+            background-color: red;
+            color: white;
+        }
+
+        #resetBtn {
+            background-color: blue;
+            color: white;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="counter" class="green">0</div>
+
+    <button id="addBtn">Add</button>
+    <button id="subtractBtn">Subtract</button>
+    <button id="resetBtn">Reset</button>
+
+    <script>
+        let counter = 0;
+
+        const counterElement = document.getElementById("counter");
+        const addButton = document.getElementById("addBtn");
+        const subtractButton = document.getElementById("subtractBtn");
+        const resetButton = document.getElementById("resetBtn");
+
+        addButton.onclick = function() {
+            counter++;
+            updateCounter();
+        };
+
+        subtractButton.onclick = function() {
+            counter--;
+            updateCounter();
+        };
+
+        resetButton.onclick = function() {
+            counter = 0;
+            updateCounter();
+        };
+
+        function updateCounter() {
+            counterElement.textContent = counter;
+
+            if (counter === 0) {
+                counterElement.classList.remove('green');
+                counterElement.classList.add('red');
+            } else if (counter > 0) {
+                counterElement.classList.remove('red');
+                counterElement.classList.add('green');
+            }
+        }
+    </script>
+
+</body>
+</html>

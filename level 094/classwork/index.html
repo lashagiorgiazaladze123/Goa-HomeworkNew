@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Animation</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            animation: changeColor 5s infinite;
+        }
+
+        @keyframes changeColor {
+            0% {
+                background-color: #FF5733; /* Red */
+            }
+            25% {
+                background-color: #33FF57; /* Green */
+            }
+            50% {
+                background-color: #3357FF; /* Blue */
+            }
+            75% {
+                background-color: #F1C40F; /* Yellow */
+            }
+            100% {
+                background-color: #FF5733; /* Red */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: white; margin-top: 50px;">Body Background Color Animation</h1>
+</body>
+</html>
