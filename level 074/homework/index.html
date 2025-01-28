@@ -1,0 +1,95 @@
+//codewarsebia
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Methods Examples</title>
+    <style>
+        .box {
+            padding: 20px;
+            margin: 10px;
+            background-color: lightblue;
+            border: 1px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="parentDiv">
+        <div class="box">This is Box 1</div>
+        <div class="box">This is Box 2</div>
+        <div class="box">This is Box 3</div>
+    </div>
+
+    <button id="createElementBtn">Create New Element</button>
+    <button id="appendChildBtn">Append Child</button>
+    <button id="insertBeforeBtn">Insert Before</button>
+    <button id="removeChildBtn">Remove Child</button>
+    <button id="replaceChildBtn">Replace Child</button>
+
+    <script>
+        // 1. .createElement
+        document.getElementById('createElementBtn').addEventListener('click', function() {
+            // შევქმნათ ახალი ელემენტი (პარაგრაფი)
+            const newElement = document.createElement('p');
+            newElement.textContent = "This is a newly created paragraph!";
+            
+            // დავამატოთ ახალი ელემენტი div-ის ბოლოში
+            document.getElementById('parentDiv').appendChild(newElement);
+        });
+
+        // 2. .appendChild(node)
+        document.getElementById('appendChildBtn').addEventListener('click', function() {
+            // შევქმნათ ახალი ელემენტი (დივის ყუთი)
+            const newBox = document.createElement('div');
+            newBox.className = 'box';
+            newBox.textContent = "Appended Box!";
+            
+            // დამატება div-ში
+            document.getElementById('parentDiv').appendChild(newBox);
+        });
+
+        // 3. .insertBefore
+        document.getElementById('insertBeforeBtn').addEventListener('click', function() {
+            // შევქმნათ ახალი ელემენტი (პარაგრაფი)
+            const newBox = document.createElement('div');
+            newBox.className = 'box';
+            newBox.textContent = "Inserted Box Before!";
+            
+            // არჩევენ პირველ ელემენტს div-ში
+            const parent = document.getElementById('parentDiv');
+            const firstChild = parent.firstChild;
+            
+            // inserting newBox before the first child of parentDiv
+            parent.insertBefore(newBox, firstChild);
+        });
+
+        // 4. .removeChild(node)
+        document.getElementById('removeChildBtn').addEventListener('click', function() {
+            // აირჩიეთ პირველი ყუთი, რომელიც უნდა წაიშალოს
+            const parent = document.getElementById('parentDiv');
+            const firstBox = parent.firstChild;
+            
+            // წაშლა ამ ელემენტის
+            parent.removeChild(firstBox);
+        });
+
+        // 5. .replaceChild
+        document.getElementById('replaceChildBtn').addEventListener('click', function() {
+            // შევქმნათ ახალი ელემენტი (დივის ყუთი)
+            const newBox = document.createElement('div');
+            newBox.className = 'box';
+            newBox.textContent = "Replaced Box!";
+            
+            // აირჩიეთ პირველი ელემენტი, რომელსაც შევცვლით
+            const parent = document.getElementById('parentDiv');
+            const firstBox = parent.firstChild;
+            
+            // შეცვლა
+            parent.replaceChild(newBox, firstBox);
+        });
+    </script>
+
+</body>
+</html>

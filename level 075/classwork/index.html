@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form and Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        input, button {
+            margin: 10px;
+            padding: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Form and Table</h2>
+    <form id="userForm">
+        <input type="text" id="name" name="name" placeholder="Your Name" required><br>
+        <input type="email" id="email" name="email" placeholder="Your Email" required><br>
+        <input type="password" id="password" name="password" placeholder="Your Password" required><br>
+        <input type="text" id="fbLink" name="fbLink" placeholder="Facebook Link" required><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <h3>User Data</h3>
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Facebook</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        const form = document.getElementById('userForm');
+        const table = document.getElementById('userTable').getElementsByTagName('tbody')[0];
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from reloading the page
+            
+            const name = form.name.value;
+            const email = form.email.value;
+            const password = form.password.value;
+            const fbLink = form.fbLink.value;
+
+            // Create new row in table
+            const newRow = table.insertRow();
+            newRow.insertCell(0).textContent = name;
+            newRow.insertCell(1).textContent = email;
+            newRow.insertCell(2).textContent = password;
+            newRow.insertCell(3).textContent = fbLink;
+
+            // Clear the form fields
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>

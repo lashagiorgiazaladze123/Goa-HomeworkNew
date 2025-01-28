@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Color of Paragraphs</title>
+</head>
+<body>
+    <p>This is the first paragraph.</p>
+    <p>This is the second paragraph.</p>
+
+    <script>
+        // აირჩიეთ ყველა პარაგრაფი page-ში
+        const paragraphs = document.getElementsByTagName('p');
+        
+        // პირველ პარაგრაფს მივანიჭოთ წითელი ფერი
+        paragraphs[0].style.color = 'red';
+
+        // მეორეზე მივანიჭოთ მწვანე ფერი
+        paragraphs[1].style.color = 'green';
+    </script>
+</body>
+</html>

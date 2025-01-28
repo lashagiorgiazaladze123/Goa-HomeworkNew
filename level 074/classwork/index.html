@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content with JavaScript</title>
+    <style>
+        /* მარტივი სტილი DIV ბლოკისთვის */
+        #contentBlock {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- მთავარი Div ბლოკი -->
+    <div id="contentBlock">
+        <!-- JavaScript-ის საშუალებით დაემატება პარაგრაფები და ღილაკები -->
+    </div>
+
+    <script>
+        // აირჩიეთ div ბლოკი, რომელშიც დაამატებთ შინაარსს
+        const contentDiv = document.getElementById('contentBlock');
+
+        // innerHTML-ით დაემატოს პარაგრაფები, ღილაკები და სხვა ელემენტები
+        contentDiv.innerHTML = `
+            <p>This is the first paragraph.</p>
+            <p>This is the second paragraph with some additional information.</p>
+            <p>The third paragraph comes with some more details for you.</p>
+
+            <button onclick="alert('Button 1 clicked!')">Click me 1</button>
+            <button onclick="alert('Button 2 clicked!')">Click me 2</button>
+
+            <input type="text" placeholder="Type something here" />
+            <br>
+            <a href="https://www.example.com" target="_blank">Visit Example</a>
+        `;
+    </script>
+
+</body>
+</html>
+
