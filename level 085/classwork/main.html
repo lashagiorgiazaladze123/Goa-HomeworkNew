@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Propagation</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      background-color: lightgreen;
+      text-align: center;
+      line-height: 100px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <!-- Creating 5 divs -->
+  <div class="box">1</div>
+  <div class="box">2</div>
+  <div class="box">3</div>
+  <div class="box">4</div>
+  <div class="box">5</div>
+
+  <script>
+    const divs = document.querySelectorAll('.box');
+
+    for (let i = 0; i < divs.length; i++) {
+      divs[i].addEventListener('click', (event) => {
+        const number = parseInt(divs[i].textContent);
+
+        if (number % 2 === 0) {
+          console.log(`Even number ${number}: Stopping propagation`);
+          event.stopPropagation(); // Stop event propagation if number is even
+        } else {
+          console.log(`Odd number ${number}: Continuing propagation`);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
