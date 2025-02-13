@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ცხოველების ვიკიპედია</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .animal-card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .animal {
+            background-color: #e8e8e8;
+            padding: 15px;
+            border-radius: 8px;
+            width: 250px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .animal h3 {
+            color: #333;
+        }
+        .animal p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>ცხოველების ვიკიპედია</h1>
+    <div class="animal-card" id="animals"></div>
+</div>
+
+<script>
+    class Animal {
+        constructor(name, species, habitat, diet) {
+            this.name = name;
+            this.species = species;
+            this.habitat = habitat;
+            this.diet = diet;
+        }
+
+        getInfo() {
+            return `${this.name} (${this.species}) - Habitat: ${this.habitat}, Diet: ${this.diet}`;
+        }
+    }
+
+    class Mammal extends Animal {
+        constructor(name, species, habitat, diet, isDomestic = false) {
+            super(name, species, habitat, diet);
+            this.isDomestic = isDomestic;
+        }
+
+        getInfo() {
+            return `${super.getInfo()}, Domestic: ${this.isDomestic}`;
+        }
+    }
+
+    class Bird extends Animal {
+        constructor(name, species, habitat, diet, canFly = true) {
+            super(name, species, habitat, diet);
+            this.canFly = canFly;
+        }
+
+        getInfo() {
+            return `${super.getInfo()}, Can fly: ${this.canFly}`;
+        }
+    }
+
+    class Fish extends Animal {
+        constructor(name, species, habitat, diet, waterType) {
+            super(name, species, habitat, diet);
+            this.waterType = waterType;
+        }
+
+        getInfo() {
+            return `${super.getInfo()}, Water type: ${this.waterType}`;
+        }
+    }
+
+    // ცხოველების მახასიათებლები
+    const animals = [
+        new Mammal('Dog', 'Canis lupus familiaris', 'Domestic', 'Omnivore', true),
+        new Bird('Eagle', 'Aquila chrysaetos', 'Mountains', 'Carnivore', true),
+        new Fish('Goldfish', 'Carassius auratus', 'Freshwater', 'Omnivore', 'Freshwater')
+    ];
+
+    // HTML-ში ცხოველების მონაცემების ჩასმა
+    const animalsContainer = document.getElementById('animals');
+    animals.forEach(animal => {
+        const animalCard = document.createElement('div');
+        animalCard.classList.add('animal');
+        
+        const animalInfo = document.createElement('h3');
+        animalInfo.textContent = animal.getInfo();
+        
+        animalCard.appendChild(animalInfo);
+        animalsContainer.appendChild(animalCard);
+    });
+</script>
+
+</body>
+</html>
